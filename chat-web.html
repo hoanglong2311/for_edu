@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kid-Friendly Chatbot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        #chat-container {
+            width: 300px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #chat-box {
+            height: 200px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        #user-input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #send-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="chat-container">
+    <div id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Type your message...">
+    <button id="send-btn" onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+    function sendMessage() {
+        var userInput = document.getElementById('user-input').value;
+        if (userInput.trim() !== '') {
+            appendMessage('You: ' + userInput);
+            document.getElementById('user-input').value = '';
+
+            // You can add your bot logic here to generate a response
+            var botResponse = 'Bot: Hello! I am a friendly chatbot.';
+            setTimeout(function () {
+                appendMessage(botResponse);
+            }, 500);
+        }
+    }
+
+    function appendMessage(message) {
+        var chatBox = document.getElementById('chat-box');
+        var newMessage = document.createElement('div');
+        newMessage.textContent = message;
+        chatBox.appendChild(newMessage);
+
+        // Scroll to the bottom of the chat box
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+</script>
+
+</body>
+</html>
